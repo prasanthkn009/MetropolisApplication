@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Metropolis.DAL.Entities
 {
-    class Activity
+    public class Activity
     {
-        [Key]
-        public int activityId { get; set; }
+        public int ActivityId { get; set; }
 
-        [Required]
-        public string activityName { get; set; }
+        public string ActivityName { get; set; }
 
-        [Required]
-        public string activityType { get; set; }
+        public string ActivityType { get; set; }
+        
+        [ForeignKey("StreetFk")]
+        public Street Street { get; set; }
+        public int StreetFk{ get; set; }
+        
+
+        public DateTime ScheduledDate { get; set; }
     }
 }
