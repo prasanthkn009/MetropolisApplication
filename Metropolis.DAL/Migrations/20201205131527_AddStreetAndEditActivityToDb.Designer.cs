@@ -4,14 +4,16 @@ using Metropolis.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Metropolis.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201205131527_AddStreetAndEditActivityToDb")]
+    partial class AddStreetAndEditActivityToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,60 +23,49 @@ namespace Metropolis.DAL.Migrations
 
             modelBuilder.Entity("Metropolis.DAL.Entities.Activity", b =>
                 {
-                    b.Property<int>("ActivityId")
+                    b.Property<int>("activityId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ActivityName")
+                    b.Property<string>("activityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ActivityType")
+                    b.Property<string>("activityType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ScheduledDate")
+                    b.Property<DateTime>("scheduledDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("StreetFk")
+                    b.Property<int>("streetFK")
                         .HasColumnType("int");
 
-                    b.HasKey("ActivityId");
-
-                    b.HasIndex("StreetFk");
+                    b.HasKey("activityId");
 
                     b.ToTable("Activities");
                 });
 
             modelBuilder.Entity("Metropolis.DAL.Entities.Street", b =>
                 {
-                    b.Property<int>("StreetId")
+                    b.Property<int>("streetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AlternativeStreet")
+                    b.Property<string>("alternativeStreet")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreetName")
+                    b.Property<string>("streetName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreetStatus")
+                    b.Property<string>("streetStatus")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("StreetId");
+                    b.HasKey("streetId");
 
                     b.ToTable("Streets");
-                });
-
-            modelBuilder.Entity("Metropolis.DAL.Entities.Activity", b =>
-                {
-                    b.HasOne("Metropolis.DAL.Entities.Street", "Street")
-                        .WithMany()
-                        .HasForeignKey("StreetFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
