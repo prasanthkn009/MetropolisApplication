@@ -14,7 +14,7 @@ namespace Metropolis.DAL.Entities
 
         public string ActivityType { get; set; }
         
-        [ForeignKey("StreetFk")]
+        //[ForeignKey("StreetFk")]
         public Street Street { get; set; }
         public int StreetFk{ get; set; }
         
