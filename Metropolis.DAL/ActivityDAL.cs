@@ -21,8 +21,7 @@ namespace Metropolis.DAL
         {
             return _dbcontext.Activities
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
-
-             .ToList();
+            .ToList();
         }
         public bool AddActivity(Activity activity)
         {
@@ -50,6 +49,7 @@ namespace Metropolis.DAL
                     activities.ActivityName = activity.ActivityName;
                     activities.ActivityType = activity.ActivityType;
                     activities.StreetFk = activity.StreetFk;
+   
                     _dbcontext.SaveChanges();
                     return true;
                 }
@@ -75,10 +75,10 @@ namespace Metropolis.DAL
                     _dbcontext.SaveChanges();
                     return true;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     throw;
-                    
+
                 }
 
             }
@@ -86,12 +86,11 @@ namespace Metropolis.DAL
             {
                 return false;
             }
-
         }
-
-            .ToList();
+        public List<Activity> AllActivity()
+        {
+            return _dbcontext.Activities.ToList(); 
         }
-
     }
 }
 
