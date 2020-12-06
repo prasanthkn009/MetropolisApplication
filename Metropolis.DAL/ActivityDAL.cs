@@ -46,7 +46,7 @@ namespace Metropolis.DAL
                 {
                     activities.ActivityName = activity.ActivityName;
                     activities.ActivityType = activity.ActivityType;
-                    activities.StreetFk = activity.StreetFk;
+                    activities.StreetName = activity.StreetName;
    
                     _dbcontext.SaveChanges();
                     return true;
