@@ -86,13 +86,11 @@ namespace Metropolis.DAL
             {
                 return false;
             }
-        }
-        public  (int,int) CondActivity(DateTime Date)
+        
+        public  List<Activity> AllActivity()
         {
-            var dateactivity = _dbcontext.Activities.Where(x => x.ScheduledDate == Date);
-            var isclosed = _dbcontext.Activities.Where (x => x.IsClosed == true);
-            return (dateactivity.Count(),isclosed.Count() );
-           
+            return _dbcontext.Activities.ToList();
+          
         }
     }
 }
