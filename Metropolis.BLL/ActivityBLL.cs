@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metropolis.DAL;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Metropolis.BLL
    public class ActivityBLL
     {
         private readonly ActivityDAL _activityDAL;
-        public ActivityBLL(ActivityDal activityDAL)
+        public ActivityBLL(ActivityDAL activityDAL)
         {
             _activityDAL = activityDAL;
         }
@@ -21,9 +22,9 @@ namespace Metropolis.BLL
            var  fromDate = DateTime.UtcNow;
             var todate = fromDate.AddDays(5);
 
-            //call activityDAL
+            activities = _activityDAL.GetActivities(fromDate, toDate);
 
-            return activities.OrderBy(x => x.IsStreetCompletelyClosed).ToList();
+            return activities.ToList();
         }
 
 
