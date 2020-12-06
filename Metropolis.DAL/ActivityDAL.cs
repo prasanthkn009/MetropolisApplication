@@ -19,7 +19,7 @@ namespace Metropolis.DAL
         {
             return _dbcontext.Activities
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
-             .ToList();
+            .ToList();
         }
         public bool AddActivity(Activity activity)
         {
