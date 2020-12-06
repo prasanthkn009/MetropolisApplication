@@ -62,7 +62,7 @@ namespace Metropolis.DAL
         }
         public bool DeleteActivity(Activity activity, int id)
         {
-            var activities = _dbcontext.Activities.Where(x => x.ActivityId == id);
+            var activities = _dbcontext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
             if (activities != null)
             {
                 try
