@@ -46,8 +46,10 @@ namespace Metropolis.DAL
                 {
                     activities.ActivityName = activity.ActivityName;
                     activities.ActivityType = activity.ActivityType;
+                    activities.ScheduledDate = activity.ScheduledDate;
                     activities.StreetName = activity.StreetName;
-   
+                    activities.AlternativeStreet = activity.AlternativeStreet;
+                    activities.IsClosed = activity.IsClosed;
                     _dbcontext.SaveChanges();
                     return true;
                 }
@@ -85,9 +87,12 @@ namespace Metropolis.DAL
                 return false;
             }
         }
-        public List<Activity> AllActivity()
+        public  (int,int) CondActivity(DateTime Date)
         {
-            return _dbcontext.Activities.ToList(); 
+            var dateactivity = _dbcontext.Activities.Where(x => x.ScheduledDate == Date);
+            var isclosed = _dbcontext.Activities.Where (x => x.IsClosed == true);
+            return (dateactivity.Count(),isclosed.Count() );
+           
         }
     }
 }
