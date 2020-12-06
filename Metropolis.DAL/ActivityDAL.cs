@@ -3,9 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 //funtions to perform add del update
-
 namespace Metropolis.DAL
 {
     public class ActivityDAL
@@ -21,7 +19,6 @@ namespace Metropolis.DAL
         {
             return _dbcontext.Activities
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
-
              .ToList();
         }
         public bool AddActivity(Activity activity)
@@ -88,10 +85,6 @@ namespace Metropolis.DAL
             }
 
         }
-
-            .ToList();
-        }
-
     }
 }
 
