@@ -24,7 +24,7 @@ namespace Metropolis.BLL
             int count = data.Where(x => x.Streetstatus == New_data.Streetstatus).Count(); //streetsatatus currenty declared in street.cs
             foreach (List<Activity> Element in data)
             {
-                if (Element.ActivityName.where(x => x.ScheduledDate == New_data.ScheduledDate) == New_data.ActivityName) ;
+                if (Element.ActivityName.where(x => x.ScheduledDate == New_data.ScheduledDate) == New_data.ActivityName) 
                 {
                     Errmsg = "Activity with same name already exist for the date";
                     Flag = 0;
