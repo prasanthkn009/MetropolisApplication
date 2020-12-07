@@ -24,7 +24,11 @@ namespace Metropolis.BLL
             int count = data.Where(x => x.IsClosed== New_data.IsClosed).Count(); 
             foreach (List<Activity>Element in data)
             {
+<<<<<<< HEAD
                 if (Element.ActivityName.where(x => x.ScheduledDate == New_data.ScheduledDate) == New_data.ActivityName)
+=======
+                if (Element.ActivityName.where(x => x.ScheduledDate == New_data.ScheduledDate) == New_data.ActivityName) 
+>>>>>>> e589c13ecf3d1e7bb2db78a8ca867db54bfbce05
                 {
                     Errmsg = "Activity with same name already exist for the date";
                     Flag = 0;
