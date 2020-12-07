@@ -19,12 +19,12 @@ namespace Metropolis.BLL
         {
             List<Activity> activities = new List<Activity>();
             
-           var  fromDate = DateTime.UtcNow;
-            var todate = fromDate.AddDays(5);
+            var fromDate = DateTime.UtcNow;
+            var toDate = fromDate.AddDays(5);
 
             activities = _activityDAL.GetActivities(fromDate, toDate);
 
-            return activities.ToList();
+            return activities.Where(x => x.IsClosed == true).OrderBy(StreetName, ScheduledDate).ToList() + activities.Where(x => x.IsClosed != true).OrderBy(StreetName, ScheduledDate).ToList();
         }
 
 

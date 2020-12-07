@@ -1,4 +1,5 @@
-﻿using Metropolis.DAL.Entities;
+﻿using Metropolis.DAL;
+using Metropolis.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Metropolis.BLL.Contracts
     public class IActivityBLL
     {
         List<Activity> ActivitiesForTheDay { get; }
+       
     }
 }
