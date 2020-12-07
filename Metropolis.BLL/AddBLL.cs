@@ -17,14 +17,14 @@ namespace Metropolis.BLL
         public string AddToDatabase(List<Activity> New_data) //call this method from DAL layer when new data is adding to database
         {
             List<Activity> data = new List<Activity>();
-            //data = _activityDAL.GetAllActivities(); GetAllActivities declaerd in DLL layer to fetch the entire database
+            data = _activityDAL.AllActivity(); // fetch the entire database
             int Flag = 0;
             string Errmsg;
             int Total = data.Where(x => x.ScheduledDate == New_data.ScheduledDate).Count();
-            int count = data.Where(x => x.Streetstatus == New_data.Streetstatus).Count(); //streetsatatus currenty declared in street.cs
-            foreach (List<Activity> Element in data)
+            int count = data.Where(x => x.IsClosed== New_data.IsClosed).Count(); 
+            foreach (List<Activity>Element in data)
             {
-                if (Element.ActivityName.where(x => x.ScheduledDate == New_data.ScheduledDate) == New_data.ActivityName) ;
+                if (Element.ActivityName.where(x => x.ScheduledDate == New_data.ScheduledDate) == New_data.ActivityName)
                 {
                     Errmsg = "Activity with same name already exist for the date";
                     Flag = 0;
@@ -34,7 +34,7 @@ namespace Metropolis.BLL
             }
             if (Total < 15)
             {
-                if (New_data.StreetStatus == "Closed")
+                if (New_data.IsClosed == true)
                 {
                     if (count < 6) { Flag = 1}
                     else
@@ -52,13 +52,9 @@ namespace Metropolis.BLL
             }
             if (Flag == 1)
             {
-                  //add to database
-                return ("success");
-            }
-            else
-            {
-                return Errmsg;
-            }
+                AddActivity(List<Activity> New_data);//add to database
+            }   
+           
         }
 
     }
