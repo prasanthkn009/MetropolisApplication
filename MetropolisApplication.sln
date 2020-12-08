@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.DAL", "Metropoli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.UI", "Metropolis.UI\Metropolis.UI.csproj", "{38328774-DD6B-41ED-AEAE-39B2BC1D77DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.BLL", "Metropolis.BLL\Metropolis.BLL.csproj", "{048200B7-9505-4813-B357-B567A4BF6D6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{38328774-DD6B-41ED-AEAE-39B2BC1D77DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38328774-DD6B-41ED-AEAE-39B2BC1D77DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38328774-DD6B-41ED-AEAE-39B2BC1D77DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{048200B7-9505-4813-B357-B567A4BF6D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048200B7-9505-4813-B357-B567A4BF6D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048200B7-9505-4813-B357-B567A4BF6D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048200B7-9505-4813-B357-B567A4BF6D6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
