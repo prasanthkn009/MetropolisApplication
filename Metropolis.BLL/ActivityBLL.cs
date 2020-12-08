@@ -41,10 +41,9 @@ namespace Metropolis.BLL
                     {
                         foreach (var Element in data)
                         {
-                            if (Element.ActivityName == New_data.ActivityName)
+                            if (Element.ActivityName == New_data.ActivityName && Element.ScheduledDate == New_data.ScheduledDate)
                             {
-                                if (Element.ScheduledDate == New_data.ScheduledDate) { break; }
-                                else { _activityDAL.AddActivity(New_data); }
+                                break;
                                 // "Activity with same name already exist for the date";
                             }
                             else { _activityDAL.AddActivity(New_data); }
