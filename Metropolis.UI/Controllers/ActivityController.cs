@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Metropolis.BLL.Contracts;
+using Metropolis.UI.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +19,15 @@ namespace Metropolis.UI.Controllers
         }
         public IActionResult Index()
         {
-            var activities = _activityBLL.GetActivitiesForTheDay();
-            activities.select(x=> new ActivityViewModel
+            var activities = _activityBLL.GetActivitiesFotTheDay();
+            activities.Select(x=> new ActivityViewModel
             {
-                ScheduledDate = x.ScheduledDate.ToString()
+                scheduledDate = x.ScheduledDate.ToString()
             });
+            Console.WriteLine("xx");
+            
             return View();
+
         }
     }
 }
