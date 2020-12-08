@@ -9,6 +9,10 @@ namespace Metropolis.BLL.Contracts
     public class IActivityBLL
     {
         List<Activity> ActivitiesForTheDay { get; }
-       
+
+        public List<Activity> GetActivitiesFotTheDay()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

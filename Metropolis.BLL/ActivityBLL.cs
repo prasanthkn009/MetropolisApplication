@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
-   public class ActivityBLL
+    public class ActivityBLL
     {
         private readonly ActivityDAL _activityDAL;
         public ActivityBLL(ActivityDAL activityDAL)
@@ -18,13 +18,13 @@ namespace Metropolis.BLL
 
         {
             List<Activity> activities = new List<Activity>();
-            
+
             var fromDate = DateTime.UtcNow;
             var toDate = fromDate.AddDays(5);
 
             activities = _activityDAL.GetActivities(fromDate, toDate);
 
-            return activities.Where(x => x.IsClosed == true).OrderBy(StreetName, ScheduledDate).ToList() + activities.Where(x => x.IsClosed != true).OrderBy(StreetName, ScheduledDate).ToList();
+            return activities.Where(x => x.IsClosed).OrderBy(x => x.StreetName, x => x.ScheduledDate).ToList() + activities.Where(x => x.!IsClosed).OrderBy(x => x.StreetName, x => x.ScheduledDate).ToList();
         }
 
 
