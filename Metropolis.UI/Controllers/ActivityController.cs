@@ -20,7 +20,7 @@ namespace Metropolis.UI.Controllers
         }
         [HttpGet]
         [Route("Activities")]
-        public List<Activity> GetAllProducts()
+        public List<Activity> GetAll()
         {
 
             return _ActivityBLL.GetActivitiesForTheDay();
