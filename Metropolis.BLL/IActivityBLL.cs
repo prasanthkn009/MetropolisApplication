@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using Metropolis.DAL.Entities;
+using System.Collections.Generic;
 
 namespace Metropolis.BLL
 {
     public interface IActivityBLL
     {
-        List<Activity> GetActivitiesFotTheDay();
+        void AddToDatabase(Activity New_data);
+        List<Activity> GetActivitiesForTheDay();
     }
 }

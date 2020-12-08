@@ -1,4 +1,4 @@
-﻿using Metropolis.BLL.Contracts;
+﻿using Metropolis.BLL;
 using Metropolis.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,15 +19,12 @@ namespace Metropolis.UI.Controllers
         }
         public IActionResult Index()
         {
-            var activities = _activityBLL.GetActivitiesFotTheDay();
+            var activities = _activityBLL.GetActivitiesForTheDay();
             activities.Select(x => new ActivityViewModel
             {
-                scheduledDate = x.ScheduledDate.ToString()
-            });
-            Console.WriteLine("xx");
-
+                ScheduledDate = x.ScheduledDate
+            }) ;
             return View();
 
         }
     }
-}

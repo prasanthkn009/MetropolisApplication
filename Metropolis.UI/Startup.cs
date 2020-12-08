@@ -1,3 +1,4 @@
+using Metropolis.BLL;
 using Metropolis.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,9 @@ namespace Metropolis.UI
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.RegisterDataServices(Configuration);
+            services.AddScoped<IActivityBLL, ActivityBLL>();
+            services.AddScoped<IActivityDAL, ActivityDAL>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
