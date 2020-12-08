@@ -54,6 +54,19 @@ namespace Metropolis.BLL
                 }
             }
         }
+        public void Delete(int Id)
+        {
+            bool c = _activityDAL.DeleteActivity(Id);
+
+
+        }
+        public void update(Activity New_data, int Id)
+        {
+            bool c = _activityDAL.EditActivity(New_data, Id);
+
+        }
+
+
 
 
     }

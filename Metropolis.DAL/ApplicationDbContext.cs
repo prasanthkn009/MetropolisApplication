@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Metropolis.DAL
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext :DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

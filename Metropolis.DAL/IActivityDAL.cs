@@ -8,7 +8,7 @@ namespace Metropolis.DAL
     {
         bool AddActivity(Activity activity);
         List<Activity> AllActivity();
-        bool DeleteActivity(Activity activity, int id);
+        bool DeleteActivity(int id);
         bool EditActivity(Activity activity, int id);
         List<Activity> GetActivities(DateTime fromDate, DateTime toDate);
     }
