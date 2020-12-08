@@ -7,7 +7,7 @@ using Metropolis.DAL.Entities;
 
 namespace Metropolis.BLL
 {
-    public class AddBLL
+    public class AddBLL : IAddBLL
     {
         private readonly ActivityDAL _activityDAL;
         public AddBLL(ActivityDAL activityDAL)

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
-    public class ActivityBLL
+    public class ActivityBLL : IActivityBLL
     {
         private readonly ActivityDAL _activityDAL;
         public ActivityBLL(ActivityDAL activityDAL)
