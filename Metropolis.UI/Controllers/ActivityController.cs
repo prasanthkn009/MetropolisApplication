@@ -23,7 +23,7 @@ namespace Metropolis.UI.Controllers
         public List<Activity> GetAllProducts()
         {
 
-            return _ActivityBLL.GetActivitiesForTheDay().ToList();
+            return _ActivityBLL.GetActivitiesForTheDay();
         }
 
         [Route("Activities")]
