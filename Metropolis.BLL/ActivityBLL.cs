@@ -27,29 +27,51 @@ namespace Metropolis.BLL
             return activities.OrderByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ThenBy(x => x.ScheduledDate).ToList();
         }
 
-        public void AddToDatabase(Activity New_data) //data provided from view
+        public void AddToDatabase(Activity newData) //data provided from view
         {
             List<Activity> data = new List<Activity>();
             data = _activityDAL.AllActivity(); // fetch the entire database
-            int Total = data.Where(x => x.ScheduledDate == New_data.ScheduledDate).Count();
-            int count = data.Where(x => x.IsClosed == New_data.IsClosed).Count();
-            if (Total < 15)
+            int total = data.Where(x => x.ScheduledDate == newData.ScheduledDate).Count();
+            int flag = 0;
+            int count = 0;
+            //int count = data.Where(x => x.IsClosed == New_data.IsClosed).Count();
+            if (total < 15)
             {
-                if (New_data.IsClosed == true)
+                foreach (var element in data)
                 {
-                    if (count < 6)
+                    if (element.ActivityName == newData.ActivityName && element.ScheduledDate == newData.ScheduledDate)
                     {
-                        foreach (var Element in data)
-                        {
-                            if (Element.ActivityName == New_data.ActivityName && Element.ScheduledDate == New_data.ScheduledDate)
-                            {
-                                break;
-                                // "Activity with same name already exist for the date";
-                            }
-                            else { _activityDAL.AddActivity(New_data); }
-                        }
+                        break;
+                        // "Activity with same name already exist for the date";
                     }
 
+                    else { flag = 1; }
+
+                }
+            }
+            if (flag ==1)
+            { 
+
+                if (newData.IsClosed == true)
+                {
+                    foreach(var Element in data)
+                    {
+                        if (Element.ScheduledDate == newData.ScheduledDate)
+                        {
+                            if (Element.IsClosed == true)
+                            {
+                                count++;
+                            }
+                        }
+                        
+                    }
+                    if (count < 6) { _activityDAL.AddActivity(newData); }
+
+
+                }
+            else 
+                {
+                    _activityDAL.AddActivity(newData);
                 }
             }
         }
@@ -59,9 +81,9 @@ namespace Metropolis.BLL
 
 
         }
-        public void update(Activity New_data, int Id)
+        public void Update(Activity newData, int Id)
         {
-            bool c = _activityDAL.EditActivity(New_data, Id);
+            bool c = _activityDAL.EditActivity(newData, Id);
 
         }
 

@@ -42,7 +42,7 @@ namespace Metropolis.UI.Controllers
         [HttpPut("{Id}")]
         public void update(Activity activity,int Id)
         {
-            _ActivityBLL.update(activity,Id);
+            _ActivityBLL.Update(activity,Id);
         }
     }
 }

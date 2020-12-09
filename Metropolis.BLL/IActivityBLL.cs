@@ -5,9 +5,9 @@ namespace Metropolis.BLL
 {
     public interface IActivityBLL
     {
-        void AddToDatabase(Activity New_data);
+        void AddToDatabase(Activity newData);
         void Delete(int Id);
         List<Activity> GetActivitiesForTheDay();
-        void update(Activity New_data, int Id);
+        void Update(Activity newData, int Id);
     }
 }
