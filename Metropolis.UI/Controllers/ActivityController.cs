@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace Metropolis.UI.Controllers
 {
     [ApiController]
-    
+    [Route("api/[controller]")]
+
     public class ActivityController : ControllerBase
     {
         private readonly IActivityBLL _ActivityBLL;
@@ -19,28 +20,28 @@ namespace Metropolis.UI.Controllers
             _ActivityBLL = ActivityBLL;
         }
         [HttpGet]
-        [Route("Activities")]
-        public List<Activity> GetAllProducts()
+        //[Route("Activities")]
+        public List<Activity> GetAll()
         {
 
-            return _ActivityBLL.GetActivitiesForTheDay().ToList();
+            return _ActivityBLL.GetActivitiesForTheDay();
         }
 
-        [Route("Activities")]
+        //[Route("Activities")]
         [HttpPost]
         public void Add(Activity activity)
         {
             _ActivityBLL.AddToDatabase(activity);
         }
 
-        [Route("Activities/{id}")]
-        [HttpDelete]
+        //[Route("Activities/{Id}")]
+        [HttpDelete("{Id}")]
         public void Delete(int Id)
         {
             _ActivityBLL.Delete(Id);
         }
 
-        [Route("Activities/{id}")]
+        //[Route("Activities/{Id}")]
         [HttpPut]
         public void update(Activity activity,int Id)
         {
