@@ -32,24 +32,46 @@ namespace Metropolis.BLL
             List<Activity> data = new List<Activity>();
             data = _activityDAL.AllActivity(); // fetch the entire database
             int Total = data.Where(x => x.ScheduledDate == New_data.ScheduledDate).Count();
-            int count = data.Where(x => x.IsClosed == New_data.IsClosed).Count();
+            int flag = 0;
+            int count = 0;
+            //int count = data.Where(x => x.IsClosed == New_data.IsClosed).Count();
             if (Total < 15)
             {
-                if (New_data.IsClosed == true)
+                foreach (var Element in data)
                 {
-                    if (count < 6)
+                    if (Element.ActivityName == New_data.ActivityName && Element.ScheduledDate == New_data.ScheduledDate)
                     {
-                        foreach (var Element in data)
-                        {
-                            if (Element.ActivityName == New_data.ActivityName && Element.ScheduledDate == New_data.ScheduledDate)
-                            {
-                                break;
-                                // "Activity with same name already exist for the date";
-                            }
-                            else { _activityDAL.AddActivity(New_data); }
-                        }
+                        break;
+                        // "Activity with same name already exist for the date";
                     }
 
+                    else { flag = 1; }
+
+                }
+            }
+            if (flag ==1)
+            { 
+
+                if (New_data.IsClosed == true)
+                {
+                    foreach(var Element in data)
+                    {
+                        if (Element.ScheduledDate == New_data.ScheduledDate)
+                        {
+                            if (Element.IsClosed == true)
+                            {
+                                count++;
+                            }
+                        }
+                        
+                    }
+                    if (count < 6) { _activityDAL.AddActivity(New_data); }
+
+
+                }
+            else 
+                {
+                    _activityDAL.AddActivity(New_data);
                 }
             }
         }
