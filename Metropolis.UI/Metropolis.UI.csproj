@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Metropolis.BLL\Metropolis.BLL.csproj" />
-    <ProjectReference Include="..\Metropolis.DAL\Metropolis.DAL.csproj" />
   </ItemGroup>
 
 </Project>
