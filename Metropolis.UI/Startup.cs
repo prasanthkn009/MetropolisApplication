@@ -25,7 +25,7 @@ namespace Metropolis.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddControllers().AddRazorRuntimeCompilation();
             services.RegisterDataServices(Configuration);
             services.AddScoped<IActivityBLL, ActivityBLL>();
             services.AddScoped<IActivityDAL, ActivityDAL>();

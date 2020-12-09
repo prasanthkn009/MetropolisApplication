@@ -63,7 +63,7 @@ namespace Metropolis.DAL
                 return false;
             }
         }
-        public bool DeleteActivity(Activity activity, int id)
+        public bool DeleteActivity(int id)
         {
             var activities = _dbcontext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
             if (activities != null)
