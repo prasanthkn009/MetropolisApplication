@@ -11,13 +11,23 @@ namespace Metropolis.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Activity> builder)
         {
-            builder.HasKey(e => e.ActivityId);
+            builder.HasKey(i => i.ActivityId);
 
             builder.Property(t => t.ActivityName)
                    .IsRequired();
-            
+
+            builder.Property(p => p.ActivityType)
+                   .IsRequired();
+
             builder.Property(x => x.ScheduledDate)
                    .IsRequired();
+            
+            builder.Property(o => o.StreetName)
+                   .IsRequired();
+            
+            builder.Property(y => y.IsClosed)
+                   .IsRequired();
         }     
+
     }
 }

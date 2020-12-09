@@ -13,12 +13,15 @@ namespace Metropolis.DAL.Entities
         public string ActivityName { get; set; }
 
         public string ActivityType { get; set; }
-        
-        [ForeignKey("StreetFk")]
-        public Street Street { get; set; }
-        public int StreetFk{ get; set; }
-        
 
         public DateTime ScheduledDate { get; set; }
+
+        public string StreetName { get; set; }
+
+        public string AlternativeStreet { get; set; }
+
+        public bool IsClosed { get; set; }
+
+
     }
 }
