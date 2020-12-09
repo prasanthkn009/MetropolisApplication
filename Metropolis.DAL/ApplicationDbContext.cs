@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Metropolis.DAL
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext :DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -16,16 +16,14 @@ namespace Metropolis.DAL
 
 
         public DbSet<Activity> Activities { get; set; }
-        public DbSet<Street> Streets { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ActivityEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new StreetEntityConfiguration());
 
         }
 
-        
+       
     }
 }
