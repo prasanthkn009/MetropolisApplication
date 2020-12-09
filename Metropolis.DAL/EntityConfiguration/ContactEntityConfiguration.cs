@@ -12,7 +12,7 @@ namespace Metropolis.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Contact> builder)
         {
-            builder.Property(u => u.ContactName).IsRequired();
+            builder.HasKey(u => u.ContactName);
 
 
             builder.Property(i => i.ContactEmailId).IsRequired();
