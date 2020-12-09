@@ -20,7 +20,11 @@ namespace Metropolis.UI.Controllers
             _ActivityBLL = ActivityBLL;
         }
         [HttpGet]
+<<<<<<< HEAD
         //[Route("Activities")]
+=======
+        [Route("Activities")]
+>>>>>>> 9f7494e8f4e63e1a35f14f100ada3d817e98cb84
         public List<Activity> GetAll()
         {
 
