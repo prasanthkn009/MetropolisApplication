@@ -20,33 +20,26 @@ namespace Metropolis.UI.Controllers
             _ActivityBLL = ActivityBLL;
         }
         [HttpGet]
-<<<<<<< HEAD
-        //[Route("Activities")]
-=======
-        [Route("Activities")]
->>>>>>> 9f7494e8f4e63e1a35f14f100ada3d817e98cb84
         public List<Activity> GetAll()
         {
 
             return _ActivityBLL.GetActivitiesForTheDay();
         }
 
-        //[Route("Activities")]
         [HttpPost]
         public void Add(Activity activity)
         {
             _ActivityBLL.AddToDatabase(activity);
         }
 
-        //[Route("Activities/{Id}")]
         [HttpDelete("{Id}")]
         public void Delete(int Id)
         {
             _ActivityBLL.Delete(Id);
         }
 
-        //[Route("Activities/{Id}")]
-        [HttpPut]
+       
+        [HttpPut("{Id}")]
         public void update(Activity activity,int Id)
         {
             _ActivityBLL.update(activity,Id);
