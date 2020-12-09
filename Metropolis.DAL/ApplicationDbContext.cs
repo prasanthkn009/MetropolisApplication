@@ -16,7 +16,7 @@ namespace Metropolis.DAL
 
 
         public DbSet<Activity> Activities { get; set; }
-
+        public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
