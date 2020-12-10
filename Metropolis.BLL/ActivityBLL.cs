@@ -29,7 +29,7 @@ namespace Metropolis.BLL
         public void AddToDatabase(Activity newData) //data provided from view
         {
             List<Activity> data = new List<Activity>();
-            data = _activityDal.AllActivity(); // fetch the entire database
+            data = _activityDal.ReturnAllActivity(); // fetch the entire database
             int total = data.Where(x => x.ScheduledDate == newData.ScheduledDate).Count();
             int flag = 0;
             int count = 0;
