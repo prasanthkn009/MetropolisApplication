@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Metropolis.BLL
 {
-    public interface IContactBLL
+    public interface IContactBll
     {
         List<Contact> GetContact();
     }

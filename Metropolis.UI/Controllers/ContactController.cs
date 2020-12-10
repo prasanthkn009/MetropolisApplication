@@ -13,8 +13,8 @@ namespace Metropolis.UI.Controllers
     [ApiController]
     public class ContactController : ControllerBase
     {
-        private readonly IContactBLL _ContactBLL;
-        public ContactController(IContactBLL ContactBLL)
+        private readonly IContactBll _ContactBLL;
+        public ContactController(IContactBll ContactBLL)
         {
             _ContactBLL = ContactBLL;
         }

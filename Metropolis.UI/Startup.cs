@@ -27,10 +27,10 @@ namespace Metropolis.UI
         {
             services.AddControllers().AddRazorRuntimeCompilation();
             services.RegisterDataServices(Configuration);
-            services.AddScoped<IActivityBLL, ActivityBLL>();
-            services.AddScoped<IActivityDAL, ActivityDAL>();
-            services.AddScoped<IContactDAL, ContactDAL>();
-            services.AddScoped<IContactBLL, ContactBLL>();
+            services.AddScoped<IActivityBll, ActivityBll>();
+            services.AddScoped<IActivityDal, ActivityDal>();
+            services.AddScoped<IContactDal, ContactDal>();
+            services.AddScoped<IContactBll, ContactBll>();
 
         }
 

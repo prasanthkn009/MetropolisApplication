@@ -7,25 +7,20 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
-    public class ContactBLL : IContactBLL
+    public class ContactBll : IContactBll
     {
-        private readonly IContactDAL _contactDAL;
-        public ContactBLL(IContactDAL contactDAL)
+        private readonly IContactDal _contactDal;
+        public ContactBll(IContactDal contactDal)
         {
-            _contactDAL = contactDAL;
-        }
-
-        public List<Contact> AllContact()
-        {
-            throw new NotImplementedException();
+            _contactDal = contactDal;
         }
 
         public List<Contact> GetContact()
 
         {
-            List<Contact> contacts = new List<Contact>();
-            contacts = _contactDAL.AllContact();
-            return contacts.ToList();
+            List<Contact> Contacts = new List<Contact>();
+            Contacts = _contactDal.AllContact();
+            return Contacts.ToList();
         }
 
 
