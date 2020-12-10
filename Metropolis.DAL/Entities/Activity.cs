@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Metropolis.Dal.Entities
+namespace Metropolis.DAL.Entities
 {
     public class Activity
     {

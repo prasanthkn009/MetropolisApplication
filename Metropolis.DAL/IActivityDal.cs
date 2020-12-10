@@ -1,8 +1,8 @@
-﻿using Metropolis.Dal.Entities;
+﻿using Metropolis.DAL.Entities;
 using System;
 using System.Collections.Generic;
 
-namespace Metropolis.Dal
+namespace Metropolis.DAL
 {
     public interface IActivityDal
     {

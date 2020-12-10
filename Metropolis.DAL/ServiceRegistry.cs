@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Metropolis.Dal
+namespace Metropolis.DAL
 {
     public static class ServiceRegistry
     {

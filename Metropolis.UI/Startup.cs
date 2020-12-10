@@ -1,5 +1,5 @@
-using Metropolis.Bll;
-using Metropolis.Dal;
+using Metropolis.BLL;
+using Metropolis.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;

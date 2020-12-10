@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Metropolis.Dal.Entities
+namespace Metropolis.DAL.Entities
 { 
 
     public class Contact

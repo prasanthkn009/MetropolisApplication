@@ -1,11 +1,11 @@
-﻿using Metropolis.Dal.Entities;
+﻿using Metropolis.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Metropolis.Dal.EntityConfiguration
+namespace Metropolis.DAL.EntityConfiguration
 {
     public class ContactEntityConfiguration : IEntityTypeConfiguration<Contact>
 

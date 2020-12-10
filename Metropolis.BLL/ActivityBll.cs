@@ -1,11 +1,11 @@
-﻿using Metropolis.Dal;
-using Metropolis.Dal.Entities;
+﻿using Metropolis.DAL;
+using Metropolis.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Metropolis.Bll
+namespace Metropolis.BLL
 {
     public class ActivityBll : IActivityBll
     {
