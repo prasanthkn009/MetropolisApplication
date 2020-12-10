@@ -6,19 +6,14 @@ namespace Metropolis.DAL.Entities
     {
         public class Contact
         {
-            public string ContactName { get; set; }
+            public int contactId { get; set; }
+            public string contactName { get; set; }
 
-            public string ContactEmailId { get; set; }
+            public string contactEmailId { get; set; }
 
-            public int ContactPhoneNumber { get; set; }
+            public int contactPhoneNumber { get; set; }
 
 
         }
-
-
-
-
-
-
     }
 
