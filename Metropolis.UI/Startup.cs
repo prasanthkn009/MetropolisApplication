@@ -29,6 +29,7 @@ namespace Metropolis.UI
             services.RegisterDataServices(Configuration);
             services.AddScoped<IActivityBLL, ActivityBLL>();
             services.AddScoped<IActivityDAL, ActivityDAL>();
+            services.AddScoped<IContactDAL, ContactDAL>();
 
         }
 

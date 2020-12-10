@@ -21,7 +21,7 @@ namespace Metropolis.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ActivityEntityConfiguration());
-
+            modelBuilder.ApplyConfiguration(new ContactEntityConfiguration());
         }
 
        
