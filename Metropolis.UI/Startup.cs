@@ -30,6 +30,7 @@ namespace Metropolis.UI
             services.AddScoped<IActivityBLL, ActivityBLL>();
             services.AddScoped<IActivityDAL, ActivityDAL>();
             services.AddScoped<IContactDAL, ContactDAL>();
+            services.AddScoped<IContactBLL, ContactBLL>();
 
         }
 
