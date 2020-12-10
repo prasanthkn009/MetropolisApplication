@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Metropolis.DAL
 {
-    public interface IActivityDAL
+    public interface IActivityDal
     {
         bool AddActivity(Activity activity);
         List<Activity> AllActivity();

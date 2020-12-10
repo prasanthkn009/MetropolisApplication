@@ -6,18 +6,18 @@ using System.Text;
 //funtions to perform add del update
 namespace Metropolis.DAL
 {
-    public class ActivityDAL : IActivityDAL
+    public class ActivityDal : IActivityDal
     {
-        private readonly ApplicationDbContext _dbcontext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ActivityDAL(ApplicationDbContext dbContext)
+        public ActivityDal(ApplicationDbContext dbContext)
         {
-            _dbcontext = dbContext;
+            _dbContext = dbContext;
         }
 
         public List<Activity> GetActivities(DateTime fromDate, DateTime toDate)
         {
-            return _dbcontext.Activities
+            return _dbContext.Activities
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
              .ToList();
         }
@@ -25,9 +25,9 @@ namespace Metropolis.DAL
         {
             try
             {
-                var activities = _dbcontext.Activities;
+                var activities = _dbContext.Activities;
                 activities.Add(activity);
-                _dbcontext.SaveChanges();
+                _dbContext.SaveChanges();
                 return true;
             }
             catch (Exception)
@@ -38,7 +38,7 @@ namespace Metropolis.DAL
         }
         public bool EditActivity(Activity activity, int id)
         {
-            var activities = _dbcontext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
+            var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
 
             if (activities != null)
             {
@@ -50,7 +50,7 @@ namespace Metropolis.DAL
                     activities.StreetName = activity.StreetName;
                     activities.AlternativeStreet = activity.AlternativeStreet;
                     activities.IsClosed = activity.IsClosed;
-                    _dbcontext.SaveChanges();
+                    _dbContext.SaveChanges();
                     return true;
                 }
                 catch (Exception)
@@ -65,14 +65,14 @@ namespace Metropolis.DAL
         }
         public bool DeleteActivity(int id)
         {
-            var activities = _dbcontext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
+            var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
             if (activities != null)
             {
                 try
                 {
 
-                    _dbcontext.Activities.Remove(activities);
-                    _dbcontext.SaveChanges();
+                    _dbContext.Activities.Remove(activities);
+                    _dbContext.SaveChanges();
                     return true;
                 }
                 catch (Exception)
@@ -89,7 +89,7 @@ namespace Metropolis.DAL
         }
         public List<Activity> AllActivity()
         {
-            return _dbcontext.Activities.ToList();
+            return _dbContext.Activities.ToList();
 
         }
     }
