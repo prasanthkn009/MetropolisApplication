@@ -1,11 +1,11 @@
-﻿using Metropolis.DAL.Entities;
-using Metropolis.DAL.EntityConfiguration;
+﻿using Metropolis.Dal.Entities;
+using Metropolis.Dal.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Metropolis.DAL
+namespace Metropolis.Dal
 {
     public class ApplicationDbContext :DbContext
     {

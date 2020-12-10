@@ -1,10 +1,10 @@
-using Metropolis.DAL.Entities;
+using Metropolis.Dal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 //funtions to perform add del update
-namespace Metropolis.DAL
+namespace Metropolis.Dal
 {
     public class ActivityDal : IActivityDal
     {

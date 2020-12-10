@@ -1,11 +1,11 @@
-﻿using Metropolis.DAL;
-using Metropolis.DAL.Entities;
+﻿using Metropolis.Dal;
+using Metropolis.Dal.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Metropolis.BLL
+namespace Metropolis.Bll
 {
     public class ContactBll : IContactBll
     {

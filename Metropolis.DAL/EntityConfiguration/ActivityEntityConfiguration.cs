@@ -1,11 +1,11 @@
-﻿using Metropolis.DAL.Entities;
+﻿using Metropolis.Dal.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Metropolis.DAL.EntityConfiguration
+namespace Metropolis.Dal.EntityConfiguration
 {
     public class ActivityEntityConfiguration : IEntityTypeConfiguration<Activity>
     {

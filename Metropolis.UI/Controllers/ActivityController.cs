@@ -1,5 +1,5 @@
 ﻿using Metropolis.BLL;
-using Metropolis.DAL.Entities;
+using Metropolis.Dal.Entities;
 using Metropolis.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;

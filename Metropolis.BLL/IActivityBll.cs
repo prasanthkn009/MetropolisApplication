@@ -1,7 +1,7 @@
-﻿using Metropolis.DAL.Entities;
+﻿using Metropolis.Dal.Entities;
 using System.Collections.Generic;
 
-namespace Metropolis.BLL
+namespace Metropolis.Bll
 {
     public interface IActivityBll
     {

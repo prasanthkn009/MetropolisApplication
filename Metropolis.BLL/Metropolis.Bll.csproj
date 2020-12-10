@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Metropolis.DAL\Metropolis.Dal.csproj" />
+    <ProjectReference Include="..\Metropolis.Dal\Metropolis.Dal.csproj" />
   </ItemGroup>
 
 </Project>

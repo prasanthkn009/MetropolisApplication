@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Metropolis.DAL.Migrations
+namespace Metropolis.Dal.Migrations
 {
     public partial class UpdatedActivitySchema : Migration
     {

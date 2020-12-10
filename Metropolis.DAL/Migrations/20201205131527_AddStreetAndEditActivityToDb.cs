@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Metropolis.DAL.Migrations
+namespace Metropolis.Dal.Migrations
 {
     public partial class AddStreetAndEditActivityToDb : Migration
     {
