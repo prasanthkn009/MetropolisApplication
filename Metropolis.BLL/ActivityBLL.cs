@@ -18,13 +18,12 @@ namespace Metropolis.BLL
 
         {
             List<Activity> activities = new List<Activity>();
-
-            var fromDate = DateTime.UtcNow;
+            
+           var  fromDate = DateTime.UtcNow;
             var toDate = fromDate.AddDays(5);
 
             activities = _activityDAL.GetActivities(fromDate, toDate);
-
-            return activities.OrderByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ThenBy(x => x.ScheduledDate).ToList();
+            return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
 
         public void AddToDatabase(Activity newData) //data provided from view
@@ -41,6 +40,7 @@ namespace Metropolis.BLL
                 {
                     if (element.ActivityName == newData.ActivityName && element.ScheduledDate == newData.ScheduledDate)
                     {
+                        flag = 0;
                         break;
                         // "Activity with same name already exist for the date";
                     }
@@ -69,7 +69,7 @@ namespace Metropolis.BLL
 
 
                 }
-            else 
+                 else 
                 {
                     _activityDAL.AddActivity(newData);
                 }
