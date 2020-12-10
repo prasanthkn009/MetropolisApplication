@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.Dal", "Metropolis.DAL\Metropolis.Dal.csproj", "{82992A89-3473-46B6-9308-5191F161FC2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.DAL", "Metropolis.DAL\Metropolis.DAL.csproj", "{82992A89-3473-46B6-9308-5191F161FC2B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.UI", "Metropolis.UI\Metropolis.UI.csproj", "{38328774-DD6B-41ED-AEAE-39B2BC1D77DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.Bll", "Metropolis.BLL\Metropolis.Bll.csproj", "{048200B7-9505-4813-B357-B567A4BF6D6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.BLL", "Metropolis.BLL\Metropolis.BLL.csproj", "{048200B7-9505-4813-B357-B567A4BF6D6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
