@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Metropolis.DAL.Entities
-    {
+{ 
+
     public class Contact
     {
             public int ContactId {get;set;}
@@ -14,7 +15,6 @@ namespace Metropolis.DAL.Entities
             public int ContactPhoneNumber { get; set; }
 
 
-        }
-
     }
+}
 

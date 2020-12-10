@@ -24,4 +24,3 @@ namespace Metropolis.DAL.EntityConfiguration
     }
 }
 
-

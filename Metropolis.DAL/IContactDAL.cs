@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Metropolis.DAL
 {
-    public interface IContactDAL
+    public interface IContactDal
     {
         List<Contact> AllContact();
     }

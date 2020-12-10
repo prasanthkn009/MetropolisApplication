@@ -6,18 +6,18 @@ using System.Text;
 
 namespace Metropolis.DAL
 {
-    public class ContactDAL : IContactDAL
+    public class ContactDal : IContactDal
     {
-        private readonly ApplicationDbContext _dbcontext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ContactDAL(ApplicationDbContext dbContext)
+        public ContactDal(ApplicationDbContext dbContext)
         {
-            _dbcontext = dbContext;
+            _dbContext = dbContext;
         }
 
         public List<Contact> AllContact()
         {
-            return _dbcontext.Contacts.ToList();
+            return _dbContext.Contacts.ToList();
 
         }
     }

@@ -9,9 +9,9 @@ namespace Metropolis.DAL
 {
     public static class ServiceRegistry
     {
-        public static void RegisterDataServices(this IServiceCollection services, IConfiguration Configuration)
+        public static void RegisterDataServices(this IServiceCollection services, IConfiguration configuration)
         {
-            var ConnectionString = Configuration.GetConnectionString("DefaultConnection");
+            var ConnectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(ConnectionString));
 

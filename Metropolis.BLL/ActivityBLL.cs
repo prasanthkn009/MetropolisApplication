@@ -7,12 +7,12 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
-    public class ActivityBLL : IActivityBLL
+    public class ActivityBll : IActivityBll
     {
-        private readonly IActivityDAL _activityDAL;
-        public ActivityBLL(IActivityDAL activityDAL)
+        private readonly IActivityDal _activityDal;
+        public ActivityBll(IActivityDal activityDal)
         {
-            _activityDAL = activityDAL;
+            _activityDal = activityDal;
         }
         public List<Activity> GetActivitiesForTheDay()
 
@@ -22,14 +22,14 @@ namespace Metropolis.BLL
            var  fromDate = DateTime.UtcNow;
             var toDate = fromDate.AddDays(5);
 
-            activities = _activityDAL.GetActivities(fromDate, toDate);
+            activities = _activityDal.GetActivities(fromDate, toDate);
             return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
 
         public void AddToDatabase(Activity newData) //data provided from view
         {
             List<Activity> data = new List<Activity>();
-            data = _activityDAL.AllActivity(); // fetch the entire database
+            data = _activityDal.AllActivity(); // fetch the entire database
             int total = data.Where(x => x.ScheduledDate == newData.ScheduledDate).Count();
             int flag = 0;
             int count = 0;
@@ -65,25 +65,25 @@ namespace Metropolis.BLL
                         }
                         
                     }
-                    if (count < 6) { _activityDAL.AddActivity(newData); }
+                    if (count < 6) { _activityDal.AddActivity(newData); }
 
 
                 }
                  else 
                 {
-                    _activityDAL.AddActivity(newData);
+                    _activityDal.AddActivity(newData);
                 }
             }
         }
         public void Delete(int Id)
         {
-            bool c = _activityDAL.DeleteActivity(Id);
+            bool c = _activityDal.DeleteActivity(Id);
 
 
         }
-        public void Update(Activity newData, int Id)
+        public void Update(Activity newData, int id)
         {
-            bool c = _activityDAL.EditActivity(newData, Id);
+            bool c = _activityDal.EditActivity(newData, id);
 
         }
 
