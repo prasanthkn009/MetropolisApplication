@@ -87,7 +87,7 @@ namespace Metropolis.DAL
                 return false;
             }
         }
-        public List<Activity> AllActivity()
+        public List<Activity> ReturnAllActivity()
         {
             return _dbContext.Activities.ToList();
 
