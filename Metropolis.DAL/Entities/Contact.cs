@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Metropolis.DAL.Entities
+{ 
+
+    public class Contact
     {
-        public class Contact
-        {
-            public int contactId { get; set; }
-            public string contactName { get; set; }
+            public int ContactId {get;set;}
+            public string ContactName { get; set; }
 
-            public string contactEmailId { get; set; }
+            public string ContactEmailId { get; set; }
 
-            public int contactPhoneNumber { get; set; }
+            public int ContactPhoneNumber { get; set; }
 
 
-        }
     }
+}
 
