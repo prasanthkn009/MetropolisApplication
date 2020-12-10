@@ -7,6 +7,19 @@ namespace Metropolis.UI.Models
 {
     public class ActivityViewModel
     {
-        public string scheduledDate { get; set; }
+        public int ActivityId { get; set; }
+
+        public string ActivityName { get; set; }
+
+        public string ActivityType { get; set; }
+
+        public DateTime ScheduledDate { get; set; }
+
+        public string StreetName { get; set; }
+
+        public string AlternativeStreet { get; set; }
+
+        public bool IsClosed { get; set; }
+
     }
 }

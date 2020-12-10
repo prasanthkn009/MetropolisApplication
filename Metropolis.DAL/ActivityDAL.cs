@@ -6,7 +6,7 @@ using System.Text;
 //funtions to perform add del update
 namespace Metropolis.DAL
 {
-    public class ActivityDAL
+    public class ActivityDAL : IActivityDAL
     {
         private readonly ApplicationDbContext _dbcontext;
 
@@ -30,9 +30,9 @@ namespace Metropolis.DAL
                 _dbcontext.SaveChanges();
                 return true;
             }
-            catch (Exception )
+            catch (Exception)
             {
-                throw ;
+                throw;
             }
 
         }
@@ -53,7 +53,7 @@ namespace Metropolis.DAL
                     _dbcontext.SaveChanges();
                     return true;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     throw;
                 }
@@ -63,7 +63,7 @@ namespace Metropolis.DAL
                 return false;
             }
         }
-        public bool DeleteActivity(Activity activity, int id)
+        public bool DeleteActivity(int id)
         {
             var activities = _dbcontext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
             if (activities != null)
@@ -86,11 +86,11 @@ namespace Metropolis.DAL
             {
                 return false;
             }
-        
-        public  List<Activity> AllActivity()
+        }
+        public List<Activity> AllActivity()
         {
             return _dbcontext.Activities.ToList();
-          
+
         }
     }
 }
