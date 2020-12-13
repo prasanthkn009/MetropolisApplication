@@ -17,7 +17,7 @@ namespace Metropolis.DAL
 	//<summary>Defines a method activities for next 5 days</summary>
 	//<param name="fromDate">current date</param>
 	//<param name="toDate">current date +5 days<?param>
-	//<return>The activies scheduled for next 5 days</return>
+	//<return>The activities scheduled for next 5 days</return>
         public List<Activity> GetActivities(DateTime fromDate, DateTime toDate)
         {
             return _dbContext.Activities
@@ -26,7 +26,7 @@ namespace Metropolis.DAL
         }
 	//<summary>Defines a method to add the acticity ino the database</summary>
 	//<param name="activity"> The data about activity to be added into database</param>
-	//<retun>True for successful insertion else false</return>
+	//<return>True for successful insertion else false</return>
         public bool AddActivity(Activity activity)
         {
            if(activity!= null)
@@ -49,9 +49,9 @@ namespace Metropolis.DAL
 
         }
 	//<summary>Defines a method for edit particular activity</summary>
-	//<param name="activity">The new details that is to be update</param>
-	//<param name="id">The unique id of activity that is to be updated</param
-	//<retun>True for successful updation else false</return>
+	//<param name="activity">The details that is to be edited</param>
+	//<param name="id">The unique id of activity that is to be edited</param
+	//<return>True for successful updation else false</return>
         public bool EditActivity(Activity activity,int id)
         {
             var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
@@ -81,7 +81,7 @@ namespace Metropolis.DAL
         }
 	//<summary>Defines a method for delete the details of particular activity</summary>
 	//<param name="id">The id of activity that is to be deleted</param>
-	//<retun>True for successful deletion else false</return>
+	//<return>True for successful deletion else false</return>
         public bool DeleteActivity(int id)
         {
             var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
@@ -107,7 +107,7 @@ namespace Metropolis.DAL
             }
         }
 	//<summary> This method return all activity </summary>
-	//<return>All activities in the database</return>
+	//<return>All details of activities in the database</return>
         public List<Activity> ReturnAllActivity()
         {
             return _dbContext.Activities.ToList();
