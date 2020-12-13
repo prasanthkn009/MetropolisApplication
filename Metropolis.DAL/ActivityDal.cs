@@ -24,8 +24,8 @@ namespace Metropolis.DAL
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
              .ToList();
         }
-	//<summary>Defines a method to add the acticity ino the database</summary>
-	//<param name="activity"> The data about activity to be added into database</param>
+	//<summary>Defines a method to add an activity </summary>
+	//<param name="activity"> The data about activity to be added </param>
 	//<return>True for successful insertion else false</return>
         public bool AddActivity(Activity activity)
         {
@@ -106,8 +106,8 @@ namespace Metropolis.DAL
                 return false;
             }
         }
-	//<summary> This method return all activity </summary>
-	//<return>All details of activities in the database</return>
+	//<summary> Method for all activity </summary>
+	//<return>Details of all activities </return>
         public List<Activity> ReturnAllActivity()
         {
             return _dbContext.Activities.ToList();
