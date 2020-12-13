@@ -14,8 +14,8 @@ namespace Metropolis.UI.Controllers
 
     public class ActivityController : ControllerBase
     {
-        private readonly IActivityBLL _ActivityBLL;
-        public ActivityController(IActivityBLL ActivityBLL)
+        private readonly IActivityBll _ActivityBLL;
+        public ActivityController(IActivityBll ActivityBLL)
         {
             _ActivityBLL = ActivityBLL;
         }
@@ -40,7 +40,7 @@ namespace Metropolis.UI.Controllers
 
        
         [HttpPut("{Id}")]
-        public void update(Activity activity,int Id)
+        public void Update(Activity activity,int Id)
         {
             _ActivityBLL.Update(activity,Id);
         }

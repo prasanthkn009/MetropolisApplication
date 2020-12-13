@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Metropolis.BLL
 {
-    public interface IActivityBLL
+    public interface IActivityBll
     {
         void AddToDatabase(Activity newData);
-        void Delete(int Id);
+        void Delete(int id);
         List<Activity> GetActivitiesForTheDay();
-        void Update(Activity newData, int Id);
+        void Update(Activity newData, int id);
     }
 }

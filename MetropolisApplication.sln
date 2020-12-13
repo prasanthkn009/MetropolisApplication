@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.DAL", "Metropoli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.UI", "Metropolis.UI\Metropolis.UI.csproj", "{38328774-DD6B-41ED-AEAE-39B2BC1D77DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metropolis.BLL", "Metropolis.BLL\Metropolis.BLL.csproj", "{048200B7-9505-4813-B357-B567A4BF6D6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metropolis.BLL", "Metropolis.BLL\Metropolis.BLL.csproj", "{048200B7-9505-4813-B357-B567A4BF6D6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
