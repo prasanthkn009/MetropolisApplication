@@ -10,9 +10,11 @@ namespace Metropolis.BLL
     public class ContactBll : IContactBll
     {
         private readonly IContactDal _contactDal;
-        public ContactBll(IContactDal contactDal)
+        private readonly ApplicationDbContext _db;
+        public ContactBll(IContactDal contactDal, ApplicationDbContext db)
         {
             _contactDal = contactDal;
+            _db = db;
         }
 
         public List<Contact> GetContact()

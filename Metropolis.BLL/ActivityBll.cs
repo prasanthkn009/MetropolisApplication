@@ -10,85 +10,71 @@ namespace Metropolis.BLL
     public class ActivityBll : IActivityBll
     {
         private readonly IActivityDal _activityDal;
-        public ActivityBll(IActivityDal activityDal)
+        private readonly ApplicationDbContext _db;
+        public ActivityBll(IActivityDal activityDal, ApplicationDbContext db)
         {
             _activityDal = activityDal;
+            _db = db;
         }
+
         public List<Activity> GetActivitiesForTheDay()
 
         {
             List<Activity> activities = new List<Activity>();
-            
-           var  fromDate = DateTime.UtcNow;
+            var  fromDate = DateTime.UtcNow;
             var toDate = fromDate.AddDays(5);
-
             activities = _activityDal.GetActivities(fromDate, toDate);
             return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
 
-        public void AddToDatabase(Activity newData) //data provided from view
+
+        public void Add(Activity newdata) 
         {
-            List<Activity> data = new List<Activity>();
-            data = _activityDal.ReturnAllActivity(); // fetch the entire database
-            int total = data.Where(x => x.ScheduledDate == newData.ScheduledDate).Count();
-            int flag = 0;
-            int count = 0;
-            //int count = data.Where(x => x.IsClosed == New_data.IsClosed).Count();
-            if (total < 15)
-            {
-                foreach (var element in data)
-                {
-                    if (element.ActivityName == newData.ActivityName && element.ScheduledDate == newData.ScheduledDate)
-                    {
-                        flag = 0;
-                        break;
-                        // "Activity with same name already exist for the date";
-                    }
-
-                    else { flag = 1; }
-
-                }
-            }
-            if (flag ==1)
+            Activity data = new Activity();
+            int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Count();
+            data = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+            if (count_activity_per_day < 15 && data == null)
             { 
-
-                if (newData.IsClosed == true)
+                if (newdata.IsClosed == true)
                 {
-                    foreach(var Element in data)
-                    {
-                        if (Element.ScheduledDate == newData.ScheduledDate)
-                        {
-                            if (Element.IsClosed == true)
-                            {
-                                count++;
-                            }
-                        }
-                        
-                    }
-                    if (count < 6) { _activityDal.AddActivity(newData); }
-
-
+                    int count_isclosed = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Where(u => u.IsClosed == true).Count();
+                    if (count_isclosed < 6) { _activityDal.AddActivity(newdata);}
                 }
-                 else 
-                {
-                    _activityDal.AddActivity(newData);
-                }
+                else { _activityDal.AddActivity(newdata); } 
+               
             }
         }
-        public void Delete(int Id)
+
+
+        public void Delete(int id)
         {
-            bool c = _activityDal.DeleteActivity(Id);
-
-
-        }
-        public void Update(Activity newData, int id)
-        {
-            bool c = _activityDal.EditActivity(newData, id);
-
+            _activityDal.DeleteActivity(id);
         }
 
 
 
+        public void Update(Activity newdata, int id)
+        {
+            Activity data = new Activity();
+            Activity rdata = new Activity();
+            rdata = _db.Activities.FirstOrDefault(u => u.ActivityId == id);
+            if (rdata!= null)
+            {
+                int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Count();
+                data = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+                if (count_activity_per_day < 16 && data == null)
+                {
+                    if(newdata.IsClosed == true && rdata.IsClosed == false)
+                    {
+                        int count_isclosed = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Where(u => u.IsClosed == true).Count();
+                        if (count_isclosed < 7) { _activityDal.EditActivity(newdata, id); }
+
+                    }
+                    else { _activityDal.EditActivity(newdata, id); }
+                }
+               
+            }
+        }
 
     }
 }

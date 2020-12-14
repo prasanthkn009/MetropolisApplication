@@ -29,7 +29,7 @@ namespace Metropolis.UI.Controllers
         [HttpPost]
         public void Add(Activity activity)
         {
-            _ActivityBLL.AddToDatabase(activity);
+            _ActivityBLL.Add(activity);
         }
 
         [HttpDelete("{Id}")]
