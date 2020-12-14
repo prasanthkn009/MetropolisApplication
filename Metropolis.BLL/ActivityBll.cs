@@ -40,8 +40,8 @@ namespace Metropolis.BLL
         public List<Activity> GetActivitiesForTheDay()
         {
             List<Activity> activities = new List<Activity>();
-            var  fromDate = DateTime.UtcNow;
-            var toDate = fromDate.AddDays(5);
+            var  fromDate = DateTime.UtcNow.Date;
+            var toDate = fromDate.AddDays(5).Date;
             activities = _activityDal.GetActivities(fromDate, toDate);
             return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
@@ -60,13 +60,13 @@ namespace Metropolis.BLL
             /// 4.Else add to database.
         
            Activity data = new Activity();
-            int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Count();
-            data = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+            int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Count();
+            data = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
             if (count_activity_per_day < 15 && data == null)
             { 
                 if (newdata.IsClosed == true)
                 {
-                    int count_isclosed = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Where(u => u.IsClosed == true).Count();
+                    int count_isclosed = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Where(u => u.IsClosed == true).Count();
                     if (count_isclosed < 6) { _activityDal.AddActivity(newdata);}
                 }
                 else { _activityDal.AddActivity(newdata); } 
@@ -107,13 +107,13 @@ namespace Metropolis.BLL
             rdata = _db.Activities.FirstOrDefault(u => u.ActivityId == id);
             if (rdata!= null)
             {
-                int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Count();
-                data = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+                int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Count();
+                data = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
                 if (count_activity_per_day < 16 && data == null)
                 {
                     if(newdata.IsClosed == true && rdata.IsClosed == false)
                     {
-                        int count_isclosed = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Where(u => u.IsClosed == true).Count();
+                        int count_isclosed = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Where(u => u.IsClosed == true).Count();
                         if (count_isclosed < 7) { _activityDal.EditActivity(newdata, id); }
                     }
                     else { _activityDal.EditActivity(newdata, id); }
