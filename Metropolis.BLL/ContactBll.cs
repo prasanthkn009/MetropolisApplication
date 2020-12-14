@@ -19,7 +19,10 @@ namespace Metropolis.BLL
         {
             _contactDal = contactDal;
         }
-
+        /// <summary>
+        /// ///Fetch the entire database of contacts to the variable Contacts.
+        /// </summary>
+        /// <returns>Contact details</returns>
         public List<Contact> GetContact()
 
         {
