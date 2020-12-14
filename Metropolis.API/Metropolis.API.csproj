@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MetropolisApplication\Metropolis.BLL\Metropolis.BLL.csproj" />
+    <ProjectReference Include="..\Metropolis.BLL\Metropolis.BLL.csproj" />
   </ItemGroup>
 
 </Project>
