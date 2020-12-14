@@ -18,16 +18,6 @@ namespace Metropolis.DAL
         /// True for successful insertion else false.
         /// </return>
         bool AddActivity(Activity activity);
-<<<<<<< HEAD
-=======
-
-        /// <summary> 
-        /// Method to return all activities.
-        /// </summary>
-        /// <return>
-        /// Details of all activities.
-        /// </return>
-        List<Activity> ReturnAllActivity();
 
         /// <summary>
         /// Declares a method to delete the details of a particular activity.
@@ -36,8 +26,7 @@ namespace Metropolis.DAL
         /// </param>
         /// <return>
         /// True for successful deletion else false.
-        /// </return>
->>>>>>> 85b0c5b2f9532f44c5bd0fb7e9e066e5e8079720
+        /// </return>>>>>>>> 85b0c5b2f9532f44c5bd0fb7e9e066e5e8079720
         bool DeleteActivity(int id);
 
         /// <summary>
