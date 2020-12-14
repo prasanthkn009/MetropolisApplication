@@ -25,9 +25,17 @@ namespace Metropolis.BLL
         }
         
         
+        /// <summary>
+        ///List the activities for upcoming 5 days.
+        /// </summary>
+        ///<remarks>
+        ///This method orders the list sorted alphabetically based on street name and ascending order of the day.
+        /// Activities with streets completely closed appears on the top of the list.
+        ///</remarks>
+        ///<returns>list of activities displayed in the website for upcoming 5 days
         
-        // This method orders the list sorted alphabetically based on street name and ascending order of the day,
-        // with the activities for which streets are completely closed appearing on the top of the list.
+        
+        
 
         public List<Activity> GetActivitiesForTheDay()
         {
@@ -40,15 +48,17 @@ namespace Metropolis.BLL
 
 
         ///<summary>This method checks the conditions for adding the acitivities in to the list.</summary>
-        /// This method checks the conditions for updating and adding the acitivities in to the list.
-        
-         /// 1.Check whether the steet is completly closed or not.
-            /// 2.If the street is closed, check the condition that only a maximum of 6 can have the streets to be closed completely.
-            /// 3.If the condition is true, add the activity to the database.
-            /// 4.If the street is open, add the activity to the database.
+        ///<param name="newdata">new data to add</param>
+         
 
         public void Add(Activity newdata) 
         {
+            /// 1.Check whether the no.of activites per day is less than 15 
+            /// 2.Also check whether Activity name of input data doen't exist in the database for same date.
+            /// 3.If the conditions are true,check the street is completely closed.
+            /// 4.Then check the no.of activies with street completely closed for the date is less than 6, then add the activity to the database.
+            /// 4.Else add to database.
+        
            Activity data = new Activity();
             int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).Count();
             data = _db.Activities.Where(u => u.ScheduledDate == newdata.ScheduledDate).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
@@ -65,12 +75,13 @@ namespace Metropolis.BLL
         }
 
 
-        ///<summary> Method for deleting an activity with id.</summary>
-        /// Method for deleting an activity with id..
 
-        public void Delete(int Id)
+        ///<summary> Method for deleting an activity with id.</summary>
+         ///<param name="id">Id of activity to delete</param>
+
+        public void Delete(int id)
         {
-          _activityDal.DeleteActivity(Id);
+          _activityDal.DeleteActivity(id);
         }
 
         
@@ -78,10 +89,19 @@ namespace Metropolis.BLL
         
         
         ///<summary>Method for updating an activity with id.</summary>
-        /// Method for updating an activity with id.
-
+        ///<param name="nnew data">data to update</param>
+        ///<param name="id">Id of activity to update</param>
+        
         public void Update(Activity newdata, int id)
         {
+            ///1.Check whether activity with the id present in database.
+            /// 2.If exists, Check whether the no.of activites per day is less than 15 
+            /// 3.Also check whether Activity name of input data doen't exist in the database for same date.
+            /// 4.if the street is completey closed for the input data and existing data in databse is completely closed.
+            /// 5.Then check the no.of activies with street completely closed for the date is less than 6, then add the activity to the database
+            /// 5.else update the databse
+        
+            
             Activity data = new Activity();
             Activity rdata = new Activity();
             rdata = _db.Activities.FirstOrDefault(u => u.ActivityId == id);
