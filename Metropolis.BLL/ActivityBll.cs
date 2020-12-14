@@ -13,7 +13,7 @@ namespace Metropolis.BLL
     /// </summary>
     /// <remarks>
     /// This class can order the actvities and check the conditions for update and add activities.
-    /// </remarks
+    /// </remarks>
     public class ActivityBll : IActivityBll
     {
         private readonly IActivityDal _activityDal;
@@ -21,7 +21,7 @@ namespace Metropolis.BLL
         {
             _activityDal = activityDal;
         }
-        /// This method can order the list alphabetically based on street name and ascending order of the day
+        /// This method orders the list alphabetically based on street name and ascending order of the day
         /// Also the activities for which streets are completely closed appears on the top of the list.
         public List<Activity> GetActivitiesForTheDay()
 
@@ -40,15 +40,15 @@ namespace Metropolis.BLL
         {
             ///Fetch the entire database of activities to the variable data.
             List<Activity> data = new List<Activity>();
-            data = _activityDal.ReturnAllActivity(); // fetch the entire database
-            int total = data.Where(x => x.ScheduledDate == newData.ScheduledDate).Count();
+            data = _activityDal.ReturnAllActivity(); /// fetch the entire database
+            int total = data.Where(x =>( x.ScheduledDate )== newData.ScheduledDate).Count();
             int flag = 0;
             int count = 0;
           
             /// 1. Checking the  condition that only a maximum of 15 activities can be performed in a day.
             /// 2.Check that the provided activity name is already existing in the database within the same date.
-            /// 3. If it is true, flag =0 andbreak
-            /// 4. If it is false, flag =1
+            /// 3. If it is true, flag = 0 and break.
+            /// 4. If it is false, flag = 1.
             if (total < 15)
             {
                 foreach (var element in data)
