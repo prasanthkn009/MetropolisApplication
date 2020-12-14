@@ -34,8 +34,8 @@ namespace Metropolis.BLL
             activities = _activityDal.GetActivities(fromDate, toDate);
             return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
-        ///This method checks the conditions for updating and adding the acitivities in to the list.
 
+        /// This method checks the conditions for updating and adding the acitivities in to the list.
         public void AddToDatabase(Activity newData) //data provided from view
         {
             ///Fetch the entire database of activities to the variable data.
@@ -94,6 +94,7 @@ namespace Metropolis.BLL
                 }
             }
         }
+        
         /// Method for deleting an activity with id..
         public void Delete(int Id)
         {
@@ -101,7 +102,8 @@ namespace Metropolis.BLL
 
 
         }
-        ///Method for updating an activity with id.
+        
+        /// Method for updating an activity with id.
         public void Update(Activity newData, int id)
         {
             bool c = _activityDal.EditActivity(newData, id);
