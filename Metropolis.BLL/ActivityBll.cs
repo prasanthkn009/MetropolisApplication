@@ -21,8 +21,8 @@ namespace Metropolis.BLL
         {
             _activityDal = activityDal;
         }
-        /// This method orders the list alphabetically based on street name and ascending order of the day
-        /// Also the activities for which streets are completely closed appears on the top of the list.
+        // This method orders the list sorted alphabetically based on street name and ascending order of the day,
+        // with the activities for which streets are completely closed appearing on the top of the list.
         public List<Activity> GetActivitiesForTheDay()
 
         {
@@ -34,7 +34,7 @@ namespace Metropolis.BLL
             activities = _activityDal.GetActivities(fromDate, toDate);
             return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
-        ///This method checks the conditions for updating and adding the acitivities in to the list.
+        ///<summary>This method checks the conditions for adding the acitivities in to the list.</summary>
 
         public void AddToDatabase(Activity newData) //data provided from view
         {
@@ -94,14 +94,14 @@ namespace Metropolis.BLL
                 }
             }
         }
-        /// Method for deleting an activity with id..
+        ///<summary> Method for deleting an activity with id.</summary>
         public void Delete(int Id)
         {
             bool c = _activityDal.DeleteActivity(Id);
 
 
         }
-        ///Method for updating an activity with id.
+        ///<summary>Method for updating an activity with id.</summary>
         public void Update(Activity newData, int id)
         {
             bool c = _activityDal.EditActivity(newData, id);

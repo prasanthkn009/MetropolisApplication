@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 namespace Metropolis.DAL
 {
-    //<summary>This class describr th method for add,delete,update,read methods</summary> 
+    //<summary>This class describes the method for add,delete,update,read methods</summary> 
     public class ActivityDal : IActivityDal
     {
         private readonly ApplicationDbContext _dbContext;

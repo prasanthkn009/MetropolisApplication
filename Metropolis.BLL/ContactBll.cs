@@ -7,6 +7,11 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
+
+    /// <summary>
+    ///This class orders the contact details.
+    /// </summary>
+  
     public class ContactBll : IContactBll
     {
         private readonly IContactDal _contactDal;
