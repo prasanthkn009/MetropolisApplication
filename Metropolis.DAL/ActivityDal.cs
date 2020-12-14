@@ -5,9 +5,13 @@ using System.Linq;
 using System.Text;
 namespace Metropolis.DAL
 {
+
+    //<summary>This class describes the method for add,delete,update,read methods</summary> 
+
     /// <summary>
     /// This class describes the methods for add,delete,update,read.
     /// </summary> 
+
     public class ActivityDal : IActivityDal
     {
         private readonly ApplicationDbContext _dbContext;
@@ -33,6 +37,11 @@ namespace Metropolis.DAL
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
              .ToList();
         }
+
+	//<summary>Defines a method to add an activity </summary>
+	//<param name="activity"> The data about activity to be added </param>
+	//<return>True for successful insertion else false</return>
+
 	
 	/// <summary>
 	/// Defines a method to add an activity .
@@ -42,6 +51,7 @@ namespace Metropolis.DAL
 	/// <return>
 	/// True for successful insertion else false.
 	/// </return>
+
         public bool AddActivity(Activity activity)
         {
             if (activity != null)
@@ -58,12 +68,21 @@ namespace Metropolis.DAL
                     throw;
                 }
             }
+
+
+
             else
             {
                 return false;
             }
 
         }
+
+	//<summary>Defines a method for edit particular activity</summary>
+	//<param name="activity">The details that is to be edited</param>
+	//<param name="id">The unique id of activity that is to be edited</param
+	//<return>True for successful updation else false</return>
+
 	
     /// <summary>
 	/// Defines a method to edit a particular activity.
@@ -75,6 +94,7 @@ namespace Metropolis.DAL
 	/// <return>
 	/// True for successful updation else false.
 	/// </return>
+
         public bool EditActivity(Activity activity,int id)
         {
             var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
