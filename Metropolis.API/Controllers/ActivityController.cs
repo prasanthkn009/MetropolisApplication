@@ -1,6 +1,5 @@
 ﻿using Metropolis.BLL;
 using Metropolis.DAL.Entities;
-using Metropolis.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
