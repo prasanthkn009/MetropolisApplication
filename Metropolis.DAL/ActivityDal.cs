@@ -155,21 +155,7 @@ namespace Metropolis.DAL
                 return false;
             }
         }
-<<<<<<< HEAD
-=======
-	
-    /// <summary> 
-	/// Method to return all activities.
-	/// </summary>
-	/// <return>
-	/// Details of all activities.
-	/// </return>
-        public List<Activity> ReturnAllActivity()
-        {
-            return _dbContext.Activities.ToList();
 
-        }
->>>>>>> 85b0c5b2f9532f44c5bd0fb7e9e066e5e8079720
     }
 }
 
