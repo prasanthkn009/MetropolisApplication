@@ -3,40 +3,99 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//funtions to perform add del update
 namespace Metropolis.DAL
 {
+
+    //<summary>This class describes the method for add,delete,update,read methods</summary> 
+
+    /// <summary>
+    /// This class describes the methods for add,delete,update,read.
+    /// </summary> 
+
     public class ActivityDal : IActivityDal
     {
         private readonly ApplicationDbContext _dbContext;
-
+	
         public ActivityDal(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-
+	
+	/// <summary>
+	/// Defines a method to get activities for next 5 days.
+	/// </summary>
+	/// <param name="fromDate">current date.
+	/// </param>
+	/// <param name="toDate">current date +5 days.
+	/// </param>
+	/// <return>
+	/// The activities scheduled for next 5 days.
+	/// </return>
         public List<Activity> GetActivities(DateTime fromDate, DateTime toDate)
         {
             return _dbContext.Activities
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
             .ToList();
         }
+
+	//<summary>Defines a method to add an activity </summary>
+	//<param name="activity"> The data about activity to be added </param>
+	//<return>True for successful insertion else false</return>
+
+	
+	/// <summary>
+	/// Defines a method to add an activity .
+	/// </summary>
+	/// <param name="activity"> The data about activity to be added.
+	/// </param>
+	/// <return>
+	/// True for successful insertion else false.
+	/// </return>
+
         public bool AddActivity(Activity activity)
         {
-            try
+            if (activity != null)
             {
-                var activities = _dbContext.Activities;
-                activities.Add(activity);
-                _dbContext.SaveChanges();
-                return true;
+                try
+                {
+                    var activities = _dbContext.Activities;
+                    activities.Add(activity);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
-            catch (Exception)
+
+
+
+            else
             {
-                throw;
+                return false;
             }
 
         }
-        public bool EditActivity(Activity activity, int id)
+
+	//<summary>Defines a method for edit particular activity</summary>
+	//<param name="activity">The details that is to be edited</param>
+	//<param name="id">The unique id of activity that is to be edited</param
+	//<return>True for successful updation else false</return>
+
+	
+    /// <summary>
+	/// Defines a method to edit a particular activity.
+	/// </summary>
+	/// <param name="activity">The details that is to be edited.
+	/// </param>
+	/// <param name="id">The unique id of activity that is to be edited.
+	/// </param>
+	/// <return>
+	/// True for successful updation else false.
+	/// </return>
+
+        public bool EditActivity(Activity activity,int id)
         {
             var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
 
@@ -63,6 +122,15 @@ namespace Metropolis.DAL
                 return false;
             }
         }
+	
+    /// <summary>
+	/// Defines a method to delete the details of a particular activity.
+	/// </summary>
+	/// <param name="id">The id of activity that is to be deleted.
+	/// </param>
+	/// <return>
+	/// True for successful deletion else false.
+	/// </return>
         public bool DeleteActivity(int id)
         {
             var activities = _dbContext.Activities.Where(x => x.ActivityId == id).FirstOrDefault();
@@ -87,6 +155,21 @@ namespace Metropolis.DAL
                 return false;
             }
         }
+<<<<<<< HEAD
+=======
+	
+    /// <summary> 
+	/// Method to return all activities.
+	/// </summary>
+	/// <return>
+	/// Details of all activities.
+	/// </return>
+        public List<Activity> ReturnAllActivity()
+        {
+            return _dbContext.Activities.ToList();
+
+        }
+>>>>>>> 85b0c5b2f9532f44c5bd0fb7e9e066e5e8079720
     }
 }
 

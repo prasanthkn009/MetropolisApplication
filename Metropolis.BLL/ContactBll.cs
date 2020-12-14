@@ -7,6 +7,11 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
+
+    /// <summary>
+    ///This class orders the contact details.
+    /// </summary>
+  
     public class ContactBll : IContactBll
     {
         private readonly IContactDal _contactDal;
@@ -16,7 +21,10 @@ namespace Metropolis.BLL
             _contactDal = contactDal;
             _db = db;
         }
-
+        /// <summary>
+        /// ///Fetch the entire database of contacts to the variable Contacts.
+        /// </summary>
+        /// <returns>Contact details</returns>
         public List<Contact> GetContact()
 
         {

@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Metropolis.DAL.Entities
 {
+    /// <summary>
+    /// This class contains the schema of the Activity Entity.
+    /// </summary> 
     public class Activity
     {
         public int ActivityId { get; set; }
