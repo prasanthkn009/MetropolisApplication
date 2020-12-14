@@ -15,9 +15,11 @@ namespace Metropolis.BLL
     public class ContactBll : IContactBll
     {
         private readonly IContactDal _contactDal;
-        public ContactBll(IContactDal contactDal)
+        private readonly ApplicationDbContext _db;
+        public ContactBll(IContactDal contactDal, ApplicationDbContext db)
         {
             _contactDal = contactDal;
+            _db = db;
         }
         /// <summary>
         /// ///Fetch the entire database of contacts to the variable Contacts.
@@ -30,19 +32,6 @@ namespace Metropolis.BLL
             Contacts = _contactDal.AllContact();
             return Contacts.ToList();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

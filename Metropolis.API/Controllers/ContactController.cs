@@ -22,7 +22,6 @@ namespace Metropolis.UI.Controllers
         [HttpGet]
         public List<Contact> GetAll()
         {
-
             return _ContactBLL.GetContact();
         }
     }
