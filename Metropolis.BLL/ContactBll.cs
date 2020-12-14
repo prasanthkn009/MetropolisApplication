@@ -33,18 +33,5 @@ namespace Metropolis.BLL
             return Contacts.ToList();
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
