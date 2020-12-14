@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Metropolis.UI
+namespace Metropolis.API
 {
     public class Startup
     {
@@ -31,7 +31,6 @@ namespace Metropolis.UI
             services.AddScoped<IActivityDal, ActivityDal>();
             services.AddScoped<IContactDal, ContactDal>();
             services.AddScoped<IContactBll, ContactBll>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +56,6 @@ namespace Metropolis.UI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-           
             });
         }
     }
