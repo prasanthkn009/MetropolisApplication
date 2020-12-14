@@ -7,6 +7,9 @@ using System.Text;
 
 namespace Metropolis.DAL.EntityConfiguration
 {
+    /// <summary>
+    /// This class contains a Configure method to apply contraints to the fields of Activity entitity.
+    /// </summary> 
     public class ActivityEntityConfiguration : IEntityTypeConfiguration<Activity>
     {
         public void Configure(EntityTypeBuilder<Activity> builder)

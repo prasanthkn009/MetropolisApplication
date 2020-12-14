@@ -1,6 +1,5 @@
 ﻿using Metropolis.BLL;
 using Metropolis.DAL.Entities;
-using Metropolis.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -29,7 +28,7 @@ namespace Metropolis.UI.Controllers
         [HttpPost]
         public void Add(Activity activity)
         {
-            _ActivityBLL.AddToDatabase(activity);
+            _ActivityBLL.Add(activity);
         }
 
         [HttpDelete("{Id}")]
@@ -38,11 +37,11 @@ namespace Metropolis.UI.Controllers
             _ActivityBLL.Delete(Id);
         }
 
-       
+
         [HttpPut("{Id}")]
-        public void Update(Activity activity,int Id)
+        public void Update(Activity activity, int Id)
         {
-            _ActivityBLL.Update(activity,Id);
+            _ActivityBLL.Update(activity, Id);
         }
     }
 }
