@@ -34,11 +34,13 @@ namespace Metropolis.BLL
         ///</remarks>
         ///<returns>list of activities displayed in the website for upcoming 5 days
         
-        
-        
-
+  
         public List<Activity> GetActivitiesForTheDay()
         {
+          ///1.Store the value of current date.
+          ///2.Get the list of activities for next 5 days.
+          ///3.Order them.
+          
             List<Activity> activities = new List<Activity>();
             var  fromDate = DateTime.UtcNow.Date;
             var toDate = fromDate.AddDays(5).Date;
