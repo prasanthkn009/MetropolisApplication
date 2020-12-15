@@ -12,10 +12,10 @@ namespace Metropolis.BLL
         /// <summary>
         /// Declares a method to add activity
         /// </summary>
-        /// <param name="newdata"> date to update</param>
+        /// <param name="newdata"> The data to be added </param>
         void Add(Activity newdata);
         /// <summary>
-        /// Declares a method to add activity
+        /// Declares a method to delete an activity with id
         /// </summary>
         /// <param name="id"> The id of activity that is to be deleted.</param>
         void Delete(int id);
