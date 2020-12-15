@@ -22,9 +22,9 @@ namespace Metropolis.BLL
             _db = db;
         }
         /// <summary>
-        /// ///Fetch the entire database of contacts to the variable Contacts.
+        /// ///List the contact details.
         /// </summary>
-        /// <returns>Contact details</returns>
+        /// <returns>contact details</returns>
         public List<Contact> GetContact()
 
         {
