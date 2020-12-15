@@ -11,7 +11,7 @@ namespace Metropolis.BLL
         /// <summary>
         /// Declares a method to get the contact details.
         /// </summary>
-        /// <returns> contact details</returns>
+        /// <returns>The contact details</returns>
         List<Contact> GetContact();
     }
 }
