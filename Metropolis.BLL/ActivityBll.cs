@@ -34,11 +34,13 @@ namespace Metropolis.BLL
         ///</remarks>
         ///<returns>list of activities displayed in the website for upcoming 5 days
         
-        
-        
-
+  
         public List<Activity> GetActivitiesForTheDay()
         {
+          ///1.Store the value of current date.
+          ///2.Get the list of activities for next 5 days.
+          ///3.Order them.
+          
             List<Activity> activities = new List<Activity>();
             var  fromDate = DateTime.UtcNow.Date;
             var toDate = fromDate.AddDays(5).Date;
@@ -108,7 +110,7 @@ namespace Metropolis.BLL
             if (rdata!= null)
             {
                 int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Count();
-                data = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+                data = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Where(u => u.ActivityId != id).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
                 if (count_activity_per_day < 16 && data == null)
                 {
                     if(newdata.IsClosed == true && rdata.IsClosed == false)

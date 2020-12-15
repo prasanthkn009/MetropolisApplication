@@ -6,8 +6,6 @@ using System.Text;
 namespace Metropolis.DAL
 {
 
-    //<summary>This class describes the method for add,delete,update,read methods</summary> 
-
     /// <summary>
     /// This class describes the methods for add,delete,update,read.
     /// </summary> 
@@ -37,11 +35,6 @@ namespace Metropolis.DAL
             .Where(x => x.ScheduledDate >= fromDate && x.ScheduledDate <= toDate)
             .ToList();
         }
-
-	//<summary>Defines a method to add an activity </summary>
-	//<param name="activity"> The data about activity to be added </param>
-	//<return>True for successful insertion else false</return>
-
 	
 	/// <summary>
 	/// Defines a method to add an activity .
@@ -78,13 +71,7 @@ namespace Metropolis.DAL
 
         }
 
-	//<summary>Defines a method for edit particular activity</summary>
-	//<param name="activity">The details that is to be edited</param>
-	//<param name="id">The unique id of activity that is to be edited</param
-	//<return>True for successful updation else false</return>
-
-	
-    /// <summary>
+        /// <summary>
 	/// Defines a method to edit a particular activity.
 	/// </summary>
 	/// <param name="activity">The details that is to be edited.
@@ -123,7 +110,7 @@ namespace Metropolis.DAL
             }
         }
 	
-    /// <summary>
+         /// <summary>
 	/// Defines a method to delete the details of a particular activity.
 	/// </summary>
 	/// <param name="id">The id of activity that is to be deleted.
