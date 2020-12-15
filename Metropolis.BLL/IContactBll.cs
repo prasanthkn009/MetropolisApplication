@@ -8,6 +8,10 @@ namespace Metropolis.BLL
     /// </summary>
     public interface IContactBll
     {
+        /// <summary>
+        /// Declares a method to get the contact details.
+        /// </summary>
+        /// <returns> contact details</returns>
         List<Contact> GetContact();
     }
 }
