@@ -7,14 +7,24 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
+
+    /// <summary>
+    ///This class orders the contact details.
+    /// </summary>
+
     public class ContactBll : IContactBll
     {
         private readonly IContactDal _contactDal;
-        public ContactBll(IContactDal contactDal)
+        private readonly ApplicationDbContext _db;
+        public ContactBll(IContactDal contactDal, ApplicationDbContext db)
         {
             _contactDal = contactDal;
+            _db = db;
         }
-
+        /// <summary>
+        /// ///List the contact details.
+        /// </summary>
+        /// <returns>contact details</returns>
         public List<Contact> GetContact()
 
         {
@@ -22,19 +32,6 @@ namespace Metropolis.BLL
             Contacts = _contactDal.AllContact();
             return Contacts.ToList();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

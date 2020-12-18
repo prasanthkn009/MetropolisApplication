@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Metropolis.DAL.Entities
-{ 
-
+{
+    /// <summary>
+    /// This class contains the schema of the Contact entity.
+    /// </summary> 
     public class Contact
     {
             public int ContactId {get;set;}

@@ -7,88 +7,122 @@ using System.Text;
 
 namespace Metropolis.BLL
 {
+    /// <summary>
+    /// The ActivityBll class.
+    /// Contains all methods for performing basic logic functions.
+    /// </summary>
+    /// <remarks>
+    /// This class can order the actvities and check the conditions for update and add activities.
+    /// </remarks>
     public class ActivityBll : IActivityBll
     {
         private readonly IActivityDal _activityDal;
-        public ActivityBll(IActivityDal activityDal)
+        private readonly ApplicationDbContext _db;
+        public ActivityBll(IActivityDal activityDal, ApplicationDbContext db)
         {
             _activityDal = activityDal;
+            _db = db;
         }
+        
+        
+        /// <summary>
+        ///List the activities for upcoming 5 days.
+        /// </summary>
+        ///<remarks>
+        ///This method orders the list sorted alphabetically based on street name and ascending order of the day.
+        /// Activities with streets completely closed appears on the top of the list.
+        ///</remarks>
+        ///<returns>list of activities displayed in the website for upcoming 5 days
+        
+  
         public List<Activity> GetActivitiesForTheDay()
-
         {
+          ///1.Store the value of current date.
+          ///2.Get the list of activities for next 5 days.
+          ///3.Order them.
+          
             List<Activity> activities = new List<Activity>();
-            
-           var  fromDate = DateTime.UtcNow;
-            var toDate = fromDate.AddDays(5);
-
+            var  fromDate = DateTime.UtcNow.Date;
+            var toDate = fromDate.AddDays(5).Date;
             activities = _activityDal.GetActivities(fromDate, toDate);
             return activities.OrderBy(x => x.ScheduledDate).ThenByDescending(x => x.IsClosed).ThenBy(x => x.StreetName).ToList();
         }
 
-        public void AddToDatabase(Activity newData) //data provided from view
+
+        ///<summary>This method checks the conditions for adding the acitivities in to the list.</summary>
+        ///<param name="newdata">new data to add</param>
+         
+
+        public void Add(Activity newdata) 
         {
-            List<Activity> data = new List<Activity>();
-            data = _activityDal.ReturnAllActivity(); // fetch the entire database
-            int total = data.Where(x => x.ScheduledDate == newData.ScheduledDate).Count();
-            int flag = 0;
-            int count = 0;
-            //int count = data.Where(x => x.IsClosed == New_data.IsClosed).Count();
-            if (total < 15)
-            {
-                foreach (var element in data)
-                {
-                    if (element.ActivityName == newData.ActivityName && element.ScheduledDate == newData.ScheduledDate)
-                    {
-                        flag = 0;
-                        break;
-                        // "Activity with same name already exist for the date";
-                    }
-
-                    else { flag = 1; }
-
-                }
-            }
-            if (flag ==1)
+            /// 1.Check whether the no.of activites per day is less than 15 
+            /// 2.Also check whether Activity name of input data doen't exist in the database for same date.
+            /// 3.If the conditions are true,check the street is completely closed.
+            /// 4.Then check the no.of activies with street completely closed for the date is less than 6, then add the activity to the database.
+            /// 4.Else add to database.
+        
+           Activity data = new Activity();
+            int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Count();
+            data = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+            if (count_activity_per_day < 15 && data == null)
             { 
-
-                if (newData.IsClosed == true)
+                if (newdata.IsClosed == true)
                 {
-                    foreach(var Element in data)
-                    {
-                        if (Element.ScheduledDate == newData.ScheduledDate)
-                        {
-                            if (Element.IsClosed == true)
-                            {
-                                count++;
-                            }
-                        }
-                        
-                    }
-                    if (count < 6) { _activityDal.AddActivity(newData); }
-
-
+                    int count_isclosed = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Where(u => u.IsClosed == true).Count();
+                    if (count_isclosed < 6) { _activityDal.AddActivity(newdata);}
                 }
-                 else 
-                {
-                    _activityDal.AddActivity(newData);
-                }
+                else { _activityDal.AddActivity(newdata); } 
+               
             }
         }
-        public void Delete(int Id)
+
+
+
+        ///<summary> Method for deleting an activity with id.</summary>
+         ///<param name="id">Id of activity to delete</param>
+
+        public void Delete(int id)
         {
-            bool c = _activityDal.DeleteActivity(Id);
-
-
+          _activityDal.DeleteActivity(id);
         }
-        public void Update(Activity newData, int id)
+
+        
+        
+        
+        
+        ///<summary>Method for updating an activity with id.</summary>
+        ///<param name="new data">data to update</param>
+        ///<param name="id">Id of activity to update</param>
+        
+        public void Update(Activity newdata, int id)
         {
-            bool c = _activityDal.EditActivity(newData, id);
-
-        }
-
-
-
+            ///1.Check whether activity with the id present in database.
+            /// 2.If exists, Check whether the no.of activites per day is less than 15 
+            /// 3.Also check whether Activity name of input data doen't exist in the database for same date.
+            /// 4.if the street is completey closed for the input data and existing data in databse is completely closed.
+            /// 5.Then check the no.of activies with street completely closed for the date is less than 6, then add the activity to the database
+            /// 5.else update the databse
+        
+            
+            Activity data = new Activity();
+            Activity rdata = new Activity();
+            rdata = _db.Activities.FirstOrDefault(u => u.ActivityId == id);
+            if (rdata!= null)
+            {
+                int count_activity_per_day = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Count();
+                data = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Where(u => u.ActivityId != id).FirstOrDefault(u => u.ActivityName == newdata.ActivityName);
+                if (count_activity_per_day < 16 && data == null)
+                {
+                    if(newdata.IsClosed == true && rdata.IsClosed == false)
+                    {
+                        int count_isclosed = _db.Activities.Where(u => u.ScheduledDate.Date == newdata.ScheduledDate.Date).Where(u => u.IsClosed == true).Count();
+                        if (count_isclosed < 7) { _activityDal.EditActivity(newdata, id); }
+                    }
+                    else { _activityDal.EditActivity(newdata, id); }
+                }
+               
+            }
+         }
 
     }
 }
