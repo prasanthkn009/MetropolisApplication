@@ -91,7 +91,7 @@ namespace Metropolis.BLL
         
         
         ///<summary>Method for updating an activity with id.</summary>
-        ///<param name="nnew data">data to update</param>
+        ///<param name="new data">data to update</param>
         ///<param name="id">Id of activity to update</param>
         
         public void Update(Activity newdata, int id)
