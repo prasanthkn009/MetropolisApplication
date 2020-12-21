@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-content>
+  <form>
+    <mat-form-field>
+      <mat-label>Activity Name</mat-label>
+      <input [(ngModel)]="activityName" name="activityName" matInput >
+    </mat-form-field>
+  </form>
+</mat-card-content>
+<mat-card-actions>
+  <button (click)="addActivity(activityName)" mat-button>Add</button>
+</mat-card-actions>
+</mat-card>
