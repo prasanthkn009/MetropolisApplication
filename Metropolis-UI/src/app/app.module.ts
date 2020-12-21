@@ -8,6 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from './api.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ActivitiesComponent } from './activities.component';
+
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -15,6 +21,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     AddActivityComponent,
+    ActivitiesComponent
   ],
   imports: [
     BrowserModule,
@@ -22,10 +29,13 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatInputModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    MatListModule,
+    MatButtonModule
 
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
