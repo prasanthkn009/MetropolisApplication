@@ -13,18 +13,15 @@ export class ActivitiesComponent{
     activities: any
     
     
-    constructor(private api: ApiService){
-        this.api.getActivity().subscribe(res => { 
-            this.activities = res
-        })
-    }
+    constructor(public api: ApiService){}
 
-    /*ngOnInIt(){
+    ngOnInit(){
         this.api.getActivity().subscribe(res => { 
             this.activities = res
-        })
+        });
         
-    }*/
+    }
+    
     post(activity: any){
 
         this.api.postActivity(activity);

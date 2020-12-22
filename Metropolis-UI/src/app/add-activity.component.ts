@@ -11,7 +11,12 @@ export class AddActivityComponent{
 
     activity: any={}
     
-    constructor(private api: ApiService){}
+    constructor(public api: ApiService){}
+
+    ngOnInit(){
+        this.api.activitySelected.subscribe(activity => this.activity =activity);
+    }
+    
     post(activity: any){
 
         this.api.postActivity(activity);

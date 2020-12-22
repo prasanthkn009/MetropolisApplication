@@ -1,8 +1,8 @@
-<mat-card>
+<mat-card class='newPosition'>
+    <mat-card-title>Click the Activity to Edit</mat-card-title>
     <mat-card-content>
-        Activity Name List
         <mat-list *ngFor="let activity of activities">
-            <mat-list-item>{{activity.activityName}}</mat-list-item>
+            <mat-list-item class="clickLink" (click)="api.selectActivity(activity)">{{activity.activityName}}</mat-list-item>
           </mat-list>
   </mat-card-content>
   <mat-card-actions>

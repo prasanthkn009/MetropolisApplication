@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-.halfwidth {
-    width: 50%;
+.halfWidth {
+    width: 40%;
+}
+
+.fullWidth {
+    width:70%;
+}
+
+.clickLink{
+    cursor: pointer;
+}
+
+.newPosition{
+    bottom:450px;
+    left:700px;
+    width: 20%;
 }

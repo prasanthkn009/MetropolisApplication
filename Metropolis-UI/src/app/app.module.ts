@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { AddActivityComponent } from './add-activity.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +15,8 @@ import { ActivitiesComponent } from './activities.component';
 
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 
 
@@ -22,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     AddActivityComponent,
     ActivitiesComponent
+
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     HttpClientModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule
 
   ],
   providers: [ApiService],
